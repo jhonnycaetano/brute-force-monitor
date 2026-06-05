@@ -1,0 +1,5 @@
+.streamlit/secrets.toml
+__pycache__/
+*.db
+*.db-journal
+erros_aplicacao.log
