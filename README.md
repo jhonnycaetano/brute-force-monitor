@@ -21,12 +21,12 @@ Demonstrar na prática conceitos de:
 
 ### Principais tópicos abordados
 
-- Parsing estruturado de logs com Regex.
-- Modelagem e persistência de dados com MySQL.
-- Mitigação de SQL Injection através de queries parametrizadas.
-- Gestão segura de credenciais com Secrets Management.
-- Observabilidade e auditoria utilizando logging.
-- Controle de acesso por autenticação.
+- Parsing estruturado de logs com Regex
+- Modelagem e persistência de dados com MySQL
+- Mitigação de SQL Injection através de queries parametrizadas
+- Gestão segura de credenciais com Secrets Management
+- Observabilidade e auditoria utilizando logging
+- Controle de acesso por autenticação
 
 ---
 
@@ -65,21 +65,28 @@ Geração de logs (auth.log)
       ├── Mapa geográfico de ataques
       ├── Gráficos e tendências
       └── Consulta histórica de eventos
-       │
-       ▼
+```
+
+---
+
 ## 📸 Screenshots
 
-    ### Acesso_SOC
-    ![Login SOC](images/Acesso_SOC.png) 
+### 🔐 Acesso SOC
 
-    ### Dashboard Principal
-    ![Dashboard Principal](images/Dashboard.png)
+![Login SOC](images/Acesso_SOC.png)
 
-    ### Cyber Dashboard
-    ![Cyber Dashboard](images/Cyber_Dashboard.png)
+### 📊 Dashboard Principal
 
-    ### Origem Relatorio
-    ![Origem Relatorio](images/Origem_Relatorio.png)
+![Dashboard Principal](images/Dashboard.png)
 
-     ### Historico
-    ![Historico](images/Historico.png) 
+### 🛡️ Cyber Dashboard
+
+![Cyber Dashboard](images/Cyber_Dashboard.png)
+
+### 🌎 Origem dos Relatórios
+
+![Origem Relatorio](images/Origem_Relatorio.png)
+
+### 📜 Histórico de Eventos
+
+![Historico](images/Historico.png)
