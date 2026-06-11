@@ -17,7 +17,7 @@ def create_connection():
             if connection.is_connected():
                 return connection
         else:
-            # Mensagem amigável caso o recrutador tente rodar fora do Streamlit
+            
             print("❌ Configurações do MySQL não encontradas no st.secrets.")
             return None
 
