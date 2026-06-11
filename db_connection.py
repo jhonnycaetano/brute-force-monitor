@@ -4,9 +4,9 @@ import mysql.connector
 from mysql.connector import Error
 import streamlit as st
 
+@st.cache_resource  # Evita reabrir a conexão a cada clique na tela
 def create_connection():
     try:
-        # O Streamlit lê o arquivo secrets.toml automaticamente se estiver rodando o app
         if "mysql" in st.secrets:
             connection = mysql.connector.connect(
                 host=st.secrets["mysql"]["host"],
@@ -14,17 +14,12 @@ def create_connection():
                 password=st.secrets["mysql"]["password"],
                 database=st.secrets["mysql"]["database"]
             )
+            if connection.is_connected():
+                return connection
         else:
-            # Fallback seguro caso rode um script isolado de teste via terminal
-            connection = mysql.connector.connect(
-                host="localhost",
-                user="root",
-                password="Kazaky35!",
-                database="bf_dashboard"
-            )
-
-        if connection.is_connected():
-            return connection
+            # Mensagem amigável caso o recrutador tente rodar fora do Streamlit
+            print("❌ Configurações do MySQL não encontradas no st.secrets.")
+            return None
 
     except Error as e:
         print(f"❌ Erro ao conectar no MySQL: {e}")

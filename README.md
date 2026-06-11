@@ -69,11 +69,17 @@ Geração de logs (auth.log)
        ▼
 ## 📸 Screenshots
 
+    ### Acesso_SOC
+    ![Login SOC](images/Acesso_SOC.png) 
+
     ### Dashboard Principal
-    ![Dashboard Principal](images/dashboard.png)
+    ![Dashboard Principal](images/Dashboard.png)
 
-    ### Alertas de Força Bruta
-    ![Alertas de Incidentes](images/alertas.png)
+    ### Cyber Dashboard
+    ![Cyber Dashboard](images/Cyber_Dashboard.png)
 
-    ### Linha do Tempo dos Ataques
-    ![Timeline de Eventos](images/timeline.png)
+    ### Origem Relatorio
+    ![Origem Relatorio](images/Origem_Relatorio.png)
+
+     ### Historico
+    ![Historico](images/Historico.png) 

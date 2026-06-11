@@ -166,13 +166,11 @@ for linha in log_data:
 df = pd.DataFrame(eventos) if eventos else pd.DataFrame(columns=["Data/Hora", "Hora", "Usuário", "IP", "Evento"])
 
 # ==========================
-# GEOLOCALIZAÇÃO
+# GEOLOCALIZAÇÃO (COM CACHE APLICADO)
 # ==========================
 
+@st.cache_data(ttl=86400) # Evita estourar o limite da API (guarda por 24h)
 def obter_localizacao(ip):
-    # Comentamos o bloqueio de IPs privados locais para permitir mapear os IPs mascarados (8.8.8.8 e 185.220.101.5)
-    # if ip.startswith("192.168.") or ip.startswith("10.") or ip.startswith("127."):
-    #     return None  
     try:
         resposta = requests.get(f"http://ip-api.com/json/{ip}", timeout=2)
         dados = resposta.json()
@@ -357,15 +355,18 @@ except Exception as e:
 
 st.subheader("📥 Exportar Relatório")
 if not df_filtrado.empty:
-    csv = df_filtrado.to_csv(index=False).encode("utf-8")
-    st.download_button(label="📥 Baixar Relatório CSV", data=csv, file_name="eventos_bruteforce.csv", mime="text/csv")
+    # Criação que gerar o CSV sob demanda
+    def converter_para_csv(df):
+        return df.to_csv(index=False).encode("utf-8")
 
+    st.download_button(
+        label="📥 Baixar Relatório CSV", 
+        data=converter_para_csv(df_filtrado), 
+        file_name="eventos_bruteforce.csv", 
+        mime="text/csv"
+    )
 st.subheader("📋 Eventos Detectados")
 if not df_filtrado.empty:
     st.dataframe(df_filtrado, use_container_width=True)
 else:
     st.info("Nenhum evento encontrado no log.")
-
-# Fechamento limpo
-cursor.close()
-conn.close()
